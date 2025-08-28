@@ -1,5 +1,9 @@
 <template>
-  <div />
+  <div>
+    <!-- 你的頁面內容 -->
+    <h1>{{ pageTitle }}</h1>
+    <!-- 其他模塊內容 -->
+  </div>
 </template>
 <script setup>
 // page.vue 的區塊
