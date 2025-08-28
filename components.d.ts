@@ -8,10 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Button: typeof import('./src/components/custom-button.vue')['default']
-    CardGrid: typeof import('./src/components/NaviCardGrid.vue')['default']
     Carousel: typeof import('./src/components/Carousel.vue')['default']
-    CostomButton: typeof import('./src/components/custom-button.vue')['default']
     CustomButton: typeof import('./src/components/custom-button.vue')['default']
     DemoCeremony: typeof import('./src/components/demo-ceremony.vue')['default']
     DynamicGrid: typeof import('./src/components/DynamicGrid.vue')['default']
@@ -20,7 +17,6 @@ declare module 'vue' {
     DynamicGrid4: typeof import('./src/components/DynamicGrid-4.vue')['default']
     DynamicGridDemo: typeof import('./src/components/DynamicGrid-demo.vue')['default']
     EleNavBar: typeof import('./src/components/EleNavBar.vue')['default']
-    Footer: typeof import('./src/components/NaviFooter.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
@@ -31,7 +27,6 @@ declare module 'vue' {
     NavigationBar: typeof import('./src/components/NavigationBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VedioView: typeof import('./src/components/video-view.vue')['default']
     VideoView: typeof import('./src/components/video-view.vue')['default']
   }
 }
