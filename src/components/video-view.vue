@@ -25,8 +25,8 @@ import { ElMessage } from 'element-plus'
 const createSnackbar = (text, type = 'success') => ElMessage({ message: text, type })
 
 const media = [
-  { type: 'video', src: '/video/0Jc_001_1080p.mp4' },
-  { type: 'video', src: '/video/Cerememory__1m30s.mp4' },
+  { type: 'video', src: import.meta.env.BASE_URL + '/video/0Jc_001_1080p.mp4' },
+  { type: 'video', src: import.meta.env.BASE_URL + '/video/Cerememory__1m30s.mp4' },
 ]
 
 const currentIndex = ref(0)
