@@ -1,56 +1,51 @@
 <template>
   <div class="media-carousel">
-<video
-  v-if="media[currentIndex].type === 'video'"
-  :src="media[currentIndex].src"
-  controls
-  autoplay
-  muted
-  loop
-  class="carousel-media"
-></video>
-<img
-  v-else
-  :src="media[currentIndex].src"
-  alt="Carousel Image"
-  class="carousel-media"
-  @error="handleImageError"
-/>
+    <video
+      v-if="media[currentIndex].type === 'video'"
+      :src="media[currentIndex].src"
+      controls
+      autoplay
+      muted
+      loop
+      class="carousel-media"
+    ></video>
+    <img
+      v-else
+      :src="media[currentIndex].src"
+      alt="Carousel Image"
+      class="carousel-media"
+      @error="handleImageError"
+    />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { ElMessage } from 'element-plus'
 const createSnackbar = (text, type = 'success') => ElMessage({ message: text, type })
 
-
 const media = [
-  // {type:"image",src:"/video/1-3_final.jpg"},
-  {type:"video",src:"/video/0Jc_001_1080p.mp4"},
-  {type:"video",src:"/video/此岸Cerememory_預告片_1m30s.mp4"},
-  // {type:"image",src:"/video/8-2_final.jpg"}
+  { type: 'video', src: '/video/0Jc_001_1080p.mp4' },
+  { type: 'video', src: '/video/Cerememory__1m30s.mp4' },
+]
 
-];
-
-const currentIndex = ref(0);
-let intervalId = null;
+const currentIndex = ref(0)
+let intervalId = null
 
 onMounted(() => {
   // 僅當媒體陣列有多於一項時啟動輪播
   if (media.length > 1) {
     intervalId = setInterval(() => {
-      currentIndex.value = (currentIndex.value + 1) % media.length;
-    }, 20000); // 每 5 秒切換
+      currentIndex.value = (currentIndex.value + 1) % media.length
+    }, 20000) // 每 5 秒切換
   }
-});
+})
 
 onBeforeUnmount(() => {
   if (intervalId) {
-    clearInterval(intervalId);
+    clearInterval(intervalId)
   }
-});
-
+})
 </script>
 
 <style scoped>
@@ -69,14 +64,13 @@ onBeforeUnmount(() => {
 
 /* 黑色透明遮罩 */
 .media-carousel::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6
-  );
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .carousel-media {
