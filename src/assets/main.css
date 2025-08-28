@@ -1,0 +1,12 @@
+@import './base.css';
+
+#app {
+  padding: 0;
+}
+
+/* Hover 狀態下的連結樣式 */
+@media (hover: hover) {
+  a:hover { /* hover 狀態下的連結樣式 */
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
