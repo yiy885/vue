@@ -1,1 +1,0 @@
-import{W as t}from"./index-C6sdhQla.js";const a={create(e){return t.apiAuth.post("/templates",e)},getAll(){return t.apiAuth.get("/templates")},getUser(){return t.apiAuth.get("/templates/user")},getId(e){return t.api.get(`/templates/${e}`)},update(e,r){return t.apiAuth.put(`/templates/${e}`,r)},delete(e){return t.apiAuth.delete(`/templates/${e}`)}};export{a as p};
