@@ -7,45 +7,53 @@ meta:
 
 <template>
   <el-container class="page-container">
+    <!-- 使用全局加載元件 -->
+    <GlobalLoading
+      v-if="pageLoading"
+      :visible="pageLoading"
+      :progress="loadingProgress"
+      :message="loadingMessage"
+      @loaded="onPageLoaded"
+    />
     <!-- <DynamicGridDemo /> -->
     <DynamicGridDemo />
     <Button
-    class="fab-button"
-    :icon="Plus"
-    size="large"
-    type="primary"
-    :round="true"
-    backgroundColor="rgba(245, 223, 77, 1)"
-    textColor="#000000"
-    @click="handleButtonClick">add</Button>
+      class="fab-button"
+      :icon="Plus"
+      size="large"
+      type="primary"
+      :round="true"
+      backgroundColor="rgba(245, 223, 77, 1)"
+      textColor="#000000"
+      @click="handleButtonClick"
+      >add</Button
+    >
   </el-container>
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { useRouter } from 'vue-router';
-import DynamicGridDemo from '@/components/DynamicGrid-demo.vue';
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import DynamicGridDemo from '@/components/DynamicGrid-demo.vue'
 
+import Button from '@/components/custom-button.vue'
+import { useUserStore } from '@/stores/user.js' // 更新為 useUserStore
 
-import Button from '@/components/custom-button.vue';
-import { useUserStore } from '@/stores/user.js'; // 更新為 useUserStore
-
-const router = useRouter();
-const userStore = useUserStore();
-const isLoggedIn = computed(() => userStore.isLoggedIn); // 映射到 isLoggedIn
+const router = useRouter()
+const userStore = useUserStore()
+const isLoggedIn = computed(() => userStore.isLoggedIn) // 映射到 isLoggedIn
 
 const handleButtonClick = () => {
-  console.log('Button clicked!');
+  console.log('Button clicked!')
   if (isLoggedIn.value) {
-    router.push('/user/addProject'); // 已登入，跳轉至專案頁面
+    router.push('/user/addProject') // 已登入，跳轉至專案頁面
   } else {
-    router.push('/login'); // 未登入，跳轉至登入頁面
+    router.push('/login') // 未登入，跳轉至登入頁面
   }
-};
+}
 </script>
 
 <style scoped>
-
 .page-container {
   display: flex;
   flex-direction: column;
@@ -70,7 +78,4 @@ const handleButtonClick = () => {
   color: #ffffff;
   font-size: 24px; /* 圖標或文字大小 */
 }
-
-
-
 </style>

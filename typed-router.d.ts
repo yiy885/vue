@@ -29,6 +29,7 @@ declare module 'vue-router/auto-routes' {
     '/text-page-1': RouteRecordInfo<'/text-page-1', '/text-page-1', Record<never, never>, Record<never, never>>,
     '/user/': RouteRecordInfo<'/user/', '/user', Record<never, never>, Record<never, never>>,
     '/user/addProject': RouteRecordInfo<'/user/addProject', '/user/addProject', Record<never, never>, Record<never, never>>,
+    '/user/addProject-ge': RouteRecordInfo<'/user/addProject-ge', '/user/addProject-ge', Record<never, never>, Record<never, never>>,
     '/user/editProject': RouteRecordInfo<'/user/editProject', '/user/editProject', Record<never, never>, Record<never, never>>,
     '/user/editProject-odd': RouteRecordInfo<'/user/editProject-odd', '/user/editProject-odd', Record<never, never>, Record<never, never>>,
   }

@@ -4,9 +4,7 @@
       <!-- 標題 -->
       <section class="hero">
         <h1 ref="titleRef" class="title">關於我們</h1>
-        <p ref="subtitleRef" class="subtitle">
-          「此岸」精神的延續，在這裡留下你的故事與想法。
-        </p>
+        <p ref="subtitleRef" class="subtitle">「此岸」精神的延續，在這裡留下你的故事與想法。</p>
       </section>
 
       <!-- 故事文字介紹 -->
@@ -21,8 +19,8 @@
           當作品完成並引起觀眾共鳴、收到回饋時，那份成就感成為最深刻的印記。
         </p>
         <p ref="storyLine3" class="highlight">
-        雖然如今團隊成員各自走上不同的道路，但這段經驗仍時常被想起。<br>
-        這個網站正是「此岸」精神的延續——紀錄每一個專案背後的歷程，凝聚那些因相同理念而產生共鳴的人。
+          雖然如今團隊成員各自走上不同的道路，但這段經驗仍時常被想起。<br />
+          這個網站正是「此岸」精神的延續——紀錄每一個專案背後的歷程，凝聚那些因相同理念而產生共鳴的人。
         </p>
       </section>
 
@@ -35,9 +33,9 @@
               shadow="hover"
               class="glow-card"
               :style="{
-                '--clr': 'rgba(245, 223, 77, 1)',    // 金黃色,
+                '--clr': 'rgba(245, 223, 77, 1)', // 金黃色,
                 '--x': glowEffects.card1.x + 'px',
-                '--y': glowEffects.card1.y + 'px'
+                '--y': glowEffects.card1.y + 'px',
               }"
               @mousemove="handleCardMouseMove($event, 'card1')"
             >
@@ -51,9 +49,9 @@
               shadow="hover"
               class="glow-card"
               :style="{
-                '--clr': 'rgba(245, 223, 77, 1)',    // 金黃色
+                '--clr': 'rgba(245, 223, 77, 1)', // 金黃色
                 '--x': glowEffects.card2.x + 'px',
-                '--y': glowEffects.card2.y + 'px'
+                '--y': glowEffects.card2.y + 'px',
               }"
               @mousemove="handleCardMouseMove($event, 'card2')"
             >
@@ -67,9 +65,9 @@
               shadow="hover"
               class="glow-card"
               :style="{
-                '--clr': 'rgba(245, 223, 77, 1)',    // 金黃色
+                '--clr': 'rgba(245, 223, 77, 1)', // 金黃色
                 '--x': glowEffects.card3.x + 'px',
-                '--y': glowEffects.card3.y + 'px'
+                '--y': glowEffects.card3.y + 'px',
               }"
               @mousemove="handleCardMouseMove($event, 'card3')"
             >
@@ -85,16 +83,17 @@
         <el-card shadow="never" ref="feedbackCard">
           <h3>留下你的想法</h3>
           <div class="btn-group">
-          <custom-button
-            class="fab-button"
-            :icon="Plus"
-            size="large"
-            type="primary"
-            :round="true"
-            backgroundColor="#0000"
-            textColor="#ffff"
-            @click="handleButtonClick">新增專案</custom-button>
-
+            <custom-button
+              class="fab-button"
+              :icon="Plus"
+              size="large"
+              type="primary"
+              :round="true"
+              backgroundColor="#0000"
+              textColor="#ffff"
+              @click="handleButtonClick"
+              >新增專案</custom-button
+            >
           </div>
         </el-card>
       </section>
@@ -107,6 +106,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { gsap } from 'gsap'
 import customButton from '@/components/custom-button.vue'
 import { Plus } from '@element-plus/icons-vue'
+import router from '@/router'
 
 // 表單狀態
 const message = ref('')
@@ -127,7 +127,7 @@ const feedbackCard = ref(null)
 const glowEffects = reactive({
   card1: { x: 0, y: 0 },
   card2: { x: 0, y: 0 },
-  card3: { x: 0, y: 0 }
+  card3: { x: 0, y: 0 },
 })
 
 // 滑鼠移動處理函數
@@ -153,6 +153,7 @@ const handleClear = () => {
 
 const handleButtonClick = () => {
   console.log('Button clicked!')
+  router.push({ name: '/' })
 }
 
 // GSAP 翻頁式動畫
@@ -160,24 +161,24 @@ onMounted(() => {
   const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } })
 
   tl.from(titleRef.value, { y: -50, opacity: 0 })
-    .from(subtitleRef.value, { opacity: 0 }, "-=0.5")
+    .from(subtitleRef.value, { opacity: 0 }, '-=0.5')
 
     // 故事逐段展開 + 模擬翻頁
-    .from(storyLine1.value, { opacity: 0, y: 30 }, "+=0.3")
-    .to(storyLine1.value, { opacity: 0.3 }, "+=1")
+    .from(storyLine1.value, { opacity: 0, y: 30 }, '+=0.3')
+    .to(storyLine1.value, { opacity: 0.3 }, '+=1')
 
-    .from(storyLine2.value, { opacity: 0, y: 30 }, "-=0.2")
-    .to(storyLine2.value, { opacity: 0.3 }, "+=1")
+    .from(storyLine2.value, { opacity: 0, y: 30 }, '-=0.2')
+    .to(storyLine2.value, { opacity: 0.3 }, '+=1')
 
-    .from(storyLine3.value, { opacity: 0, y: 30, color: "#409EFF" }, "-=0.2")
+    .from(storyLine3.value, { opacity: 0, y: 30, color: '#409EFF' }, '-=0.2')
 
     // 卡片與留言區
     .from([card1.value, card2.value, card3.value], {
       opacity: 0,
       y: 30,
-      stagger: 0.3
+      stagger: 0.3,
     })
-    .from(feedbackCard.value, { opacity: 0, scale: 0.9 }, "-=0.3")
+    .from(feedbackCard.value, { opacity: 0, scale: 0.9 }, '-=0.3')
 })
 </script>
 
